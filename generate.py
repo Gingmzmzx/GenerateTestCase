@@ -6,7 +6,7 @@ import time
 import zipfile
 
 def AppendInputData(content, file: int, split: str = " "):
-    with open(f"Input/input{file}.in", "a+", encoding="utf-8") as f:
+    with open(f"Input/input{file}.txt", "a+", encoding="utf-8") as f:
         f.write(f"{content}{split}")
 
 def GetJsonData(file:str = "data.json"):
@@ -90,7 +90,7 @@ def GenerateOutputFile(file: str="data.json"):
     for item in json_data:
         count = int(item.get("count", 10))
         for i in range(baseCnt, baseCnt + count):
-            os.system(f".\solve.exe < Input/input{i}.in > Output/output{i}.out")
+            os.system(f".\solve.exe < Input/input{i}.txt > Output/output{i}.txt")
         baseCnt += count
     os.remove("solve.exe")
 
