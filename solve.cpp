@@ -1,58 +1,25 @@
 #include <bits/stdc++.h>
-#define MAXN 100005
+#define MAXN 3005
 using namespace std;
+int N, W;
+int h[MAXN];
+int w[MAXN];
+int dp[MAXN][MAXN];
+int main(){
+	cin >> N >> W;
+	for (int i = 1; i <= N; i++)
+		cin >> h[i] >> w[i], dp[i][w[i]] = 1;
 
-struct edge
-{
-    int v, w, next;
-} e[MAXN];
-int s[MAXN], t[MAXN], head[MAXN], cnt;
-queue<int> q;
+	for (int i = 1; i <= N; i++)
+		for (int j = w[i]; j <= W; j++)
+			for (int k = 1; k < i; k++)
+				if (h[k] < h[i])
+					dp[i][j] = max(dp[i][j], dp[k][j - w[i]] + 1);
+	int ans = 0;
+	for (int i = 1; i <= W; i++)
+		for (int j = 0; j <= N; j++)
+			ans = max(ans, dp[j][i]);
+	cout << ans << endl;
 
-void add(int u, int v, int w)
-{
-    e[++cnt].v = v;
-    e[cnt].w = w;
-    e[cnt].next = head[u];
-    head[u] = cnt;
-}
-
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL), cout.tie(NULL);
-
-    int n, m, c;
-    cin >> n >> m >> c;
-    for (int i = 1; i <= n; i++)
-        cin >> s[i];
-    for (int i = 1; i <= c; i++)
-    {
-        int u, v, w;
-        cin >> u >> v >> w;
-        add(u, v, w);
-        t[v]++;
-    }
-
-    // TopSort
-    for (int i = 1; i <= n; i++)
-        if (!t[i])
-            q.push(i);
-    while (!q.empty())
-    {
-        int u = q.front();
-        q.pop();
-        for (int i = head[u]; i; i = e[i].next)
-        {
-            int v = e[i].v, w = e[i].w;
-            s[v] = max(s[v], s[u] + w);
-            t[v]--;
-            if (!t[v])
-                q.push(v);
-        }
-    }
-    for (int i = 1; i <= n; i++)
-        cout << s[i] << endl;
-
-    return 0;
+	return 0;
 }

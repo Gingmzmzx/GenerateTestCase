@@ -15,6 +15,11 @@ Python3，目前只支持Windows系统
 - 运行`python generate.py`，程序会自动生成`testcase.zip`，该文件可以直接导入至`Vijos`OJ中
   您也可以在任何项目中引入`generate.py`，并参考`if __name__ == "__main__":`语句块中的代码来生成测试数据
 
+## 其他工具
+在[converter目录](/converter/)中，提供了一些转换工具。
+- [luogu2vijos.py](/converter/luogu2vijos.py)可以将Luogu兼容的测试数据格式转换为Vijos兼容的测试数据
+- [vijos2luogu.py](/converter/vijos2luogu.py)可以将Vijos兼容的测试数据格式转换为Luogu兼容的测试数据
+
 ### `data.json`格式
 该文件内容有一个列表构成，其中每个元素代表一组测试数据，有以下格式：
 - `data`：一个列表，其中每个元素代表一组输入数据，具体格式见下文

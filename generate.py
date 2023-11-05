@@ -85,7 +85,7 @@ def GenerateOutputFile(file: str="data.json"):
     # Generate output data by `solve.cpp`
     # Make sure that you have called `GenerateInputFile` before calling this function
     json_data = GetJsonData(file)
-    os.system("g++ solve.cpp -o solve.exe")
+    os.system("g++ solve.cpp -o solve.exe -std=c++14 -O2 -static") # 编译参数参照CSP-S2023编译参数
     baseCnt = 0
     for item in json_data:
         count = int(item.get("count", 10))
