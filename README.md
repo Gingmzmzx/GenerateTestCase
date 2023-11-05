@@ -104,7 +104,7 @@ Python3，目前只支持Windows系统
 ```
 
 ### 实例
-本仓库中已包含一个`solve.cpp`（[洛谷 P6145](https://www.luogu.com.cn/problem/P6145)）和`data.json`。您可以直接运行`python generate.py`生成数据看一下效果。
+本仓库中已包含一个`solve.cpp`（[AKIOI OJ P1009](https://oj.xzynb.top/p/1009)）和`data.json`。您可以直接运行`python generate.py`生成数据看一下效果。
 
 ## 开源协议
 本项目使用`Apache License 2.0`开源协议，并不得商用，请自觉遵守，谢谢。
